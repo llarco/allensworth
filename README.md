@@ -1,2 +1,2 @@
-# allensworth
-Data logger with PubSub to Datastore integration
+# Allensworth
+Data logger with PubSub to Datastore integration.
