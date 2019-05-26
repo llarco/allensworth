@@ -7,5 +7,6 @@ py_library(
 
 py_test(
     name = "power_supply_test",
-    srcs = ["power_supply_test.py"]
+    srcs = ["power_supply_test.py"],
+    deps = [":power_supply"],
 )
