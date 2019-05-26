@@ -1,0 +1,5 @@
+steps:
+- name: gcr.io/cloud-builders/bazel
+  args: ['build', ':power_suply']
+- name: gcr.io/cloud-builders/bazel
+  args: ['test', ':power_suply_test']
