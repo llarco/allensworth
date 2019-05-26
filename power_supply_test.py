@@ -1,7 +1,9 @@
 import unittest
 
 class TestPowerSupplyMethods(unittest.TestCase):
-  pass
+
+  def test_fail(self):
+    self.assertTrue(False)
 
 
 if __name__ == '__main__':
