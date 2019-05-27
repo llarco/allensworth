@@ -1,5 +1,5 @@
 steps:
 - name: gcr.io/cloud-builders/bazel
-  args: ['build', '--incompatible_use_python_toolchains', ':power_supply']
+  args: ['build', '--incompatible_use_python_toolchains', '//...:all']
 - name: gcr.io/cloud-builders/bazel
-  args: ['test', '--incompatible_use_python_toolchains', ':power_supply_test']
+  args: ['test', '--incompatible_use_python_toolchains', '//...:all']
