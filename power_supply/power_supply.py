@@ -164,7 +164,7 @@ class BkPrecision1685BSeriesPowerSupply(PowerSupplyInterface):
     return self._send_command('CURR025')
 
   def set_output_on(self) -> None:
-    raise NotImplementedError()
+    return self._send_command('SOUT0')
 
   def set_output_off(self) -> None:
-    raise NotImplementedError()
+    return self._send_command('SOUT1')

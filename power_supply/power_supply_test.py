@@ -72,6 +72,20 @@ class TestBkPrecision1685BSeriesPowerSupply(unittest.TestCase):
     self.assertAlmostEqual(current, 1.45)
     self.assert_serial_called_with_response(mock_serial, 'GETD\r')
 
+  def test_set_output_on(self):
+    mock_serial = self.mock_serial.return_value
+    mock_serial.read_until.return_value = b'OK\r'
+
+    self.assertTrue(self.power_supply.set_output_on())
+    self.assert_serial_called_without_response(mock_serial, 'SOUT0\r')
+
+  def test_set_output_off(self):
+    mock_serial = self.mock_serial.return_value
+    mock_serial.read_until.return_value = b'OK\r'
+
+    self.assertTrue(self.power_supply.set_output_off())
+    self.assert_serial_called_without_response(mock_serial, 'SOUT1\r')
+
   def assert_serial_called_without_response(self, mock_serial: mock.Mock,
                                             command: str):
     mock_serial.write.assert_called_with(command)
