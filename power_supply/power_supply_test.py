@@ -90,16 +90,16 @@ class TestBkPrecision1685BSeriesPowerSupply(unittest.TestCase):
                                             command: str):
     mock_serial.write.assert_called_with(command)
     mock_serial.read_until.assert_called_with(b'\r')
-    mock_serial.reset_input_buffer.assert_called_once()
-    mock_serial.reset_output_buffer.assert_called_once()
+    mock_serial.reset_input_buffer.assert_called_once_with()
+    mock_serial.reset_output_buffer.assert_called_once_with()
 
   def assert_serial_called_with_response(self, mock_serial: mock.Mock,
                                          command: str):
     mock_serial.write.assert_called_with(command)
     mock_serial.read_until.assert_called_with(b'\r')
     mock_serial.read_until.assert_called_with(b'\r')
-    mock_serial.reset_input_buffer.assert_called_once()
-    mock_serial.reset_output_buffer.assert_called_once()
+    mock_serial.reset_input_buffer.assert_called_once_with()
+    mock_serial.reset_output_buffer.assert_called_once_with()
 
 
 if __name__ == '__main__':
