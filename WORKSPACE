@@ -13,8 +13,8 @@ pip_repositories()
 load("@io_bazel_rules_python//python:pip.bzl", "pip_import")
 
 pip_import(
-   name = "pip_deps",
-   requirements = "//:requirements.txt",
+    name = "pip_deps",
+    requirements = "//:requirements.txt",
 )
 
 load("@pip_deps//:requirements.bzl", "pip_install")
