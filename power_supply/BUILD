@@ -13,11 +13,14 @@ py_library(
     srcs = ["power_supply.py"],
     deps = [
         requirement("pyserial"),
-    ]
+    ],
 )
 
 py_test(
     name = "power_supply_test",
     srcs = ["power_supply_test.py"],
-    deps = [":power_supply"],
+    deps = [
+        ":power_supply",
+        requirement("mock"),
+    ],
 )
