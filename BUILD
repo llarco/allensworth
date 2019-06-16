@@ -14,6 +14,9 @@ py_binary(
     deps = [
         "//power_supply",
         requirement("google-cloud-pubsub"),
+        requirement("googleapis-common-protos"),
+        requirement("google-api-core"),
+        requirement("google-api-python-client"),
     ],
 )
 
@@ -24,5 +27,8 @@ py_test(
         ":publisher",
         "//power_supply",
         requirement("google-cloud-pubsub"),
+        requirement("googleapis-common-protos"),
+        requirement("google-api-core"),
+        requirement("google-api-python-client"),
     ],
 )

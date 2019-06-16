@@ -1,3 +1,5 @@
+googleapis-common-protos
+google-api-core
 google-api-python-client
 google-cloud-pubsub
 mock
