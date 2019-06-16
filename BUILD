@@ -1,3 +1,5 @@
+load("@pip_deps//:requirements.bzl", "requirement")
+
 package(default_visibility = ["//visibility:public"])
 
 load(
@@ -9,7 +11,10 @@ py_binary(
     name = "publisher",
     srcs = ["publisher.py"],
     main = "publisher.py",
-    deps = ["//power_supply"],
+    deps = [
+        "//power_supply",
+        requirement("google-cloud-pubsub"),
+    ],
 )
 
 py_test(
