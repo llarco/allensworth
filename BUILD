@@ -13,7 +13,6 @@ py_binary(
     main = "publisher.py",
     deps = [
         "//power_supply",
-        requirement("googleapis-common-protos"),
         requirement("google-cloud-pubsub"),
     ],
 )
@@ -24,7 +23,5 @@ py_test(
     deps = [
         ":publisher",
         "//power_supply",
-        requirement("googleapis-common-protos"),
-        requirement("google-cloud-pubsub"),
     ],
 )
