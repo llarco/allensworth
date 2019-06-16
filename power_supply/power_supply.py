@@ -78,6 +78,10 @@ class BkPrecision1685BSeriesPowerSupply(PowerSupplyInterface):
                                  stopbits=serial.STOPBITS_ONE,
                                  timeout=timeout_seconds)
 
+  @property
+  def name(self):
+    return self._name
+
   def close(self) -> None:
     self._serial.close()
 
