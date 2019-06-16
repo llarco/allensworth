@@ -1,3 +1,4 @@
+googleapis-common-protos
 google-cloud-pubsub
 mock
 pyserial
