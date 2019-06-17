@@ -1,7 +1,10 @@
 """Publishes data to the cloud."""
 
 import argparse
+from google.cloud import pubsub_v1
+import json
 from power_supply import power_supply
+import time
 import typing
 
 parser = argparse.ArgumentParser()
@@ -17,11 +20,13 @@ class Publisher(object):
           google_cloud_project_id: str,
           pubsub_topic_name: str):
     self.power_supplies = power_supplies
-    self.google_cloud_project_id = google_cloud_project_id
-    self.pubsub_topic_name = pubsub_topic_name
 
-  def _read_data(self):
-    data = {}
+    self.pubsub_publisher = pubsub_v1.PublisherClient()
+    self.pubsub_topic_path = self.pubsub_publisher.topic_path(
+        google_cloud_project_id, pubsub_topic_name)
+
+  def _read_data(self) -> dict:
+    data = {'time_ns': time.time_ns()}
     for ps in self.power_supplies:
       data.update({
           ps.name: {
@@ -29,13 +34,14 @@ class Publisher(object):
               'current_level': ps.get_current_level(),
               'display_voltage': ps.get_display_voltage(),
               'display_current': ps.get_display_current()
-          }
+          },
       })
     return data.copy()
 
   def read_data_and_publish(self):
-    unused_data = self._read_data()
-    # TODO: publish data to PubSub.
+    data = self._read_data()
+    data_bytes = json.dumps(data)
+    self.pubsub_publisher.publish(self.pubsub_topic_path, data=data_bytes)
 
 
 def main():
