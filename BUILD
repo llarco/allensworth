@@ -23,6 +23,7 @@ py_test(
     deps = [
         ":publisher",
         "//power_supply",
-        requirement("google-api-core")
+        requirement("google-api-core"),
+        requirement("google-api-python-client"),
     ],
 )
