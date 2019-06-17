@@ -13,6 +13,7 @@ py_binary(
     main = "publisher.py",
     deps = [
         "//power_supply",
+        requirement("google-api-core"),
         requirement("google-cloud-pubsub"),
     ],
 )
@@ -24,6 +25,6 @@ py_test(
         ":publisher",
         "//power_supply",
         requirement("google-api-core"),
-        requirement("google-api-python-client"),
+        requirement("google-cloud-pubsub"),
     ],
 )
